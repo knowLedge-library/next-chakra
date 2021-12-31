@@ -1,0 +1,45 @@
+{
+  "name": "next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.7",
+    "@cosmosreverse/cosmos": "^0.0.1",
+    "@cosmosreverse/cosmos-react": "^0.0.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@formatjs/intl-locale": "^2.4.38",
+    "@formatjs/intl-pluralrules": "^4.1.4",
+    "@formatjs/intl-relativetimeformat": "^9.3.1",
+    "@rematch/core": "1.2.0",
+    "@rematch/select": "^2.0.5",
+    "cookie": "^0.4.1",
+    "fork-ts-checker-webpack-plugin": "^6.3.4",
+    "framer-motion": "^4.1.17",
+    "immer": "^9.0.7",
+    "next": "^11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-intl": "^5.20.12",
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5",
+    "styled-components": "^5.3.1"
+  },
+  "devDependencies": {
+    "@types/cookie": "^0.4.1",
+    "@types/react": "17.0.14",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-redux": "^7.1.16",
+    "@types/styled-components": "^5.1.14",
+    "eslint": "7.30.0",
+    "eslint-config-next": "11.0.1",
+    "typescript": "4.3.5"
+  }
+}

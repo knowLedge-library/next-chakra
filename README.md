@@ -1,2 +1,1 @@
-# next-chakra
-nextjs + chakra + intl
+### Use nextjs & chakra ui to build a project
