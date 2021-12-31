@@ -7,7 +7,7 @@ import { Flex, Box, Spacer, Heading } from "@chakra-ui/react";
 import SwitchLanguage from "../components/SwitchLanguage";
 import TestNpmPackage from "../components/NpmPackage";
 
-// @todo: Save locale in localstorage or cookie
+// @todo: Save locale in localstorage or cookie.
 interface IProps {
   locale: string | undefined;
 }
