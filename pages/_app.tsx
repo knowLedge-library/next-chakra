@@ -100,7 +100,7 @@ class MyApp extends App<ConnectProps & ThirdProps> {
           messages={localeMessages[locale as Language]}
           textComponent="span"
         >
-          <ErrorBoundary FallbackComponent={Fallback}>
+          <ErrorBoundary fallback={(props) => <Fallback {...props} />}>
             <Provider store={store as any}>
               <Component {...pageProps} />
             </Provider>
