@@ -15,11 +15,14 @@ const model = {
   state: initialState,
 
   reducers: {
-    setLocale(state: IGlobalSettingState, payload: Language) {
-      return produce(state, (draftState: Draft<IGlobalSettingState>) => {
+    setLocale: produce(
+      (
+        draftState: Draft<IGlobalSettingState>,
+        payload: ISettingState["locale"]
+      ) => {
         draftState.locale = payload;
-      });
-    },
+      }
+    ),
 
     setLoad(state: ISettingState, load: boolean) {
       return {

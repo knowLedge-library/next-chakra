@@ -22,7 +22,11 @@ export interface ModelConfig<S = any, RS = any> {
     | ModelEffects<RS>
     | ((dispatch: any) => ModelEffects<RS>)
     | (() => ModelEffects<RS>);
-  selectors?: (slice: any, createSelector: any, hasProps: any) => ModelSelect<RS>;
+  selectors?: (
+    slice: any,
+    createSelector: any,
+    hasProps: any
+  ) => ModelSelect<RS>;
 }
 
 export interface Models<M = any> {
@@ -30,7 +34,7 @@ export interface Models<M = any> {
 }
 
 export type RematchRootState<M extends Models> = {
-  [modelKey in keyof M]: M[modelKey]['state'];
+  [modelKey in keyof M]: M[modelKey]["state"];
 };
 
 // export type RematchRootSelect<M extends Models> = {
@@ -78,21 +82,21 @@ type Effect2connect<E extends Function> = E extends (
 type PermissiveReturnType<T> = T extends (...args: any) => infer R ? R : T;
 
 export type RematchRootDispatch<M extends Models> = {
-  [modelKey in keyof M]: ReducerFromModel<M[modelKey]['reducers']> &
-    EffectFromModel<PermissiveReturnType<M[modelKey]['effects']>>;
+  [modelKey in keyof M]: ReducerFromModel<M[modelKey]["reducers"]> &
+    EffectFromModel<PermissiveReturnType<M[modelKey]["effects"]>>;
 };
 
 export type RematchRootSelect<M extends Models, RS> = <T>(
-  selector: (
-    models: {
-      [modelKey in keyof M]: SelectFromModel<ReturnType<M[modelKey]['selectors']>>;
-    },
-  ) => T,
+  selector: (models: {
+    [modelKey in keyof M]: SelectFromModel<
+      ReturnType<M[modelKey]["selectors"]>
+    >;
+  }) => T
 ) => (state: RS) => T;
 
-declare module '@rematch/core' {
+declare module "@rematch/core" {
   export function init<S, D, L>(
-    config: any,
+    config: any
   ): {
     dispatch: D;
     select: L;
@@ -102,22 +106,24 @@ declare module '@rematch/core' {
 
 /***************************** END REMATCH STUFF *****************************/
 
-import { IStore } from 'modules/store';
+import { IStore } from "modules/store";
 
-type Dispatch = IStore['dispatch'];
+type Dispatch = IStore["dispatch"];
 
 // Based on @see https://github.com/rematch/rematch/issues/601#issuecomment-466766288
-declare module 'react-redux' {
+declare module "react-redux" {
   interface Connect {
-    // eslint-disable-next-line unused-imports/no-unused-vars
     <no_state = {}, TDispatchProps = {}, TOwnProps = {}>(
       mapStateToProps: null | undefined,
-      mapDispatchToProps: (dispatch: Dispatch) => TDispatchProps,
+      mapDispatchToProps: (dispatch: Dispatch) => TDispatchProps
     ): InferableComponentEnhancerWithProps<TDispatchProps, TOwnProps>;
 
     <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = {}>(
       mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
-      mapDispatchToProps: (dispatch: Dispatch) => TDispatchProps,
-    ): InferableComponentEnhancerWithProps<TStateProps & TDispatchProps, TOwnProps>;
+      mapDispatchToProps: (dispatch: Dispatch) => TDispatchProps
+    ): InferableComponentEnhancerWithProps<
+      TStateProps & TDispatchProps,
+      TOwnProps
+    >;
   }
 }

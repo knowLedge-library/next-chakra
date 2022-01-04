@@ -6,12 +6,15 @@
  * @Description: Test package page
  */
 import React from "react";
-import { defineCustomElements } from "@cosmosreverse/cosmos/loader";
-import { TodoList } from "@cosmosreverse/cosmos-react";
+// import { defineCustomElements } from "@cosmosreverse/cosmos/loader";
+// import { TodoList } from "@cosmosreverse/cosmos-react";
 
-/** 测试 Web-Component 组件 */
-defineCustomElements();
+// /** 测试 Web-Component 组件 */
+// defineCustomElements();
 
-const TestNpmPackage: React.FC = () => <TodoList todoTitle="hahahah" />;
+// const TestNpmPackage: React.FC = () =>
+//   <span>1</span> || <TodoList todoTitle="hahahah" />;
+
+const TestNpmPackage: React.FC = () => null;
 
 export default TestNpmPackage;

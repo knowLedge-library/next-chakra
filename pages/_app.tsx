@@ -16,15 +16,28 @@ import { Provider, connect } from "react-redux";
 import { IntlProvider } from "react-intl";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import theme from "../lib/theme";
-import { localeMessages } from "../lib/internation";
-import { IRootState, store } from "../modules/store";
-import compose from "../utils/compose";
-import withRematch from "../lib/withRematch";
+import theme from "lib/theme";
+import withRematch from "lib/withRematch";
+import { localeMessages } from "lib/internation";
 
-type ConnectProps = ReturnType<typeof mapStateToProps>;
+import { IRootDispatch, IRootState, store } from "modules/store";
 
-class MyApp extends App<ConnectProps> {
+import compose from "utils/compose";
+import { isServer } from "utils/server";
+import { getLanguageByNavigator } from "utils/language";
+import { parseCookies, setCookie } from "utils/cookies";
+
+import { Language } from "types/language";
+
+import { LOCALE } from "constants/language";
+
+type ThirdProps = {
+  locale: Language;
+};
+
+type ConnectProps = ReturnType<typeof mapDispatchToProps>;
+
+class MyApp extends App<ConnectProps & ThirdProps> {
   public static async getInitialProps({
     Component,
     ctx,
@@ -33,6 +46,16 @@ class MyApp extends App<ConnectProps> {
     ctx: NextPageContext;
   }) {
     let pageProps = {};
+    let locale = parseCookies(ctx.req)?.locale as Language;
+
+    if (isServer()) {
+      ctx.res?.setHeader(
+        "Set-Cookie",
+        `locale=${locale}; Domain=localhost; Path=/;`
+      );
+    } else {
+      locale = getLanguageByNavigator();
+    }
 
     /**
      * @use Make sure the `getInitialProps` can be geted in other child pages.
@@ -43,23 +66,27 @@ class MyApp extends App<ConnectProps> {
       pageProps = { ...data };
     }
 
-    return { pageProps };
+    return { pageProps, locale: locale || Language.zh };
   }
 
-  render() {
-    const { Component, pageProps, locale } = this.props;
+  public override componentDidMount() {
+    const { locale, setLocale } = this.props;
 
-    console.log(locale);
+    setCookie(LOCALE, locale, 7);
+    setLocale(locale);
+  }
+
+  public override render() {
+    const { Component, pageProps, locale } = this.props;
 
     return (
       <ChakraProvider theme={theme}>
         <IntlProvider
           locale={locale}
-          messages={localeMessages[locale]}
+          messages={localeMessages[locale as Language]}
           textComponent="span"
         >
-          {/* @ts-ignore */}
-          <Provider store={store}>
+          <Provider store={store as any}>
             <Component {...pageProps} />
           </Provider>
         </IntlProvider>
@@ -68,8 +95,11 @@ class MyApp extends App<ConnectProps> {
   }
 }
 
-const mapStateToProps = ({ setting }: IRootState) => ({
-  locale: setting.locale,
+const mapDispatchToProps = ({ setting }: IRootDispatch) => ({
+  setLocale: setting.setLocale,
 });
 
-export default compose(withRematch, connect(mapStateToProps, undefined))(MyApp);
+export default compose(
+  withRematch,
+  connect(undefined, mapDispatchToProps)
+)(MyApp);

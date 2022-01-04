@@ -1,16 +1,20 @@
 import type { NextPage, NextPageContext } from "next";
 
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useIntl } from "react-intl";
 import { Flex, Box, Spacer, Heading } from "@chakra-ui/react";
 
-import SwitchLanguage from "../components/SwitchLanguage";
-import TestNpmPackage from "../components/NpmPackage";
+import TestNpmPackage from "components/NpmPackage";
 
 // @todo: Save locale in localstorage or cookie.
 interface IProps {
   locale: string | undefined;
 }
+
+const SwitchLanguage = dynamic(() => import("components/SwitchLanguage"), {
+  ssr: false,
+});
 
 const Home: NextPage<IProps> = ({ locale }) => {
   const intl = useIntl();
