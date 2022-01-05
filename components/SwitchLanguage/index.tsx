@@ -1,6 +1,6 @@
 import type { IRootDispatch, IRootState } from "modules/store";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useToast, Button, Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import { stringify } from "querystring";

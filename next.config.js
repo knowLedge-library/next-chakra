@@ -1,8 +1,12 @@
 const path = require("path");
+const withTM = require("next-transpile-modules");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 /** @type { import('next').NextConfig } */
-module.exports = {
+module.exports = withTM([
+  "@cosmosreverse/cosmos",
+  "@cosmosreverse/cosmos-react",
+])({
   reactStrictMode: true,
 
   webpack(config, options) {
@@ -23,4 +27,17 @@ module.exports = {
 
     return config;
   },
-};
+
+  webpackDevMiddleware(config) {
+    // eslint-disable-next-line no-param-reassign
+    config.watchOptions.ignored = [
+      // remove ignoring of all npm modules
+      ...config.watchOptions.ignored.filter(
+        (ignore) => !ignore.toString().includes("node_modules")
+      ),
+      /[\\/]node_modules[\\/]((?!dist|dist-react|loader)[\\/].+)/,
+    ];
+
+    return config;
+  },
+});

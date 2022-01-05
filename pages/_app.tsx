@@ -15,8 +15,10 @@ import App from "next/app";
 import { Provider, connect } from "react-redux";
 import { IntlProvider } from "react-intl";
 import { Button, ChakraProvider } from "@chakra-ui/react";
-
-import { ErrorBoundary } from "components/ErrorBoundary";
+import {
+  applyPolyfills,
+  defineCustomElements,
+} from "@cosmosreverse/cosmos/loader";
 
 import theme from "lib/theme";
 import withRematch from "lib/withRematch";
@@ -85,6 +87,8 @@ class MyApp extends App<ConnectProps & ThirdProps> {
 
   public override componentDidMount() {
     const { locale, setLocale } = this.props;
+
+    applyPolyfills().then(() => defineCustomElements(window));
 
     setCookie(LOCALE, locale, 7);
     setLocale(locale);
