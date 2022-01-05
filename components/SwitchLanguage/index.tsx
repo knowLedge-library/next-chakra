@@ -10,6 +10,7 @@ import { LOCALE } from "constants/language";
 import { setCookie } from "utils/cookies";
 
 import { Language } from "types/language";
+import { notify } from "lib/bugsnag";
 
 const SwitchLanguage: React.FC = () => {
   const toast = useToast();
@@ -61,6 +62,10 @@ const SwitchLanguage: React.FC = () => {
     // console.log(allMessage);
   };
 
+  const handleNotify = () => {
+    notify("custom error message in here");
+  };
+
   return (
     <RadioGroup onChange={handleChange} value={locale}>
       <Stack direction="row" bgColor="transparent">
@@ -70,6 +75,7 @@ const SwitchLanguage: React.FC = () => {
 
       {/* <Button onClick={handleClick}>Console server message</Button> */}
       <Button onClick={handleAll}>Get all</Button>
+      <Button onClick={handleNotify}>Notify error</Button>
     </RadioGroup>
   );
 };

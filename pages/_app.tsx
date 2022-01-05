@@ -14,7 +14,7 @@ import type { NextPageContext } from "next";
 import App from "next/app";
 import { Provider, connect } from "react-redux";
 import { IntlProvider } from "react-intl";
-import { Button, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import {
   applyPolyfills,
   defineCustomElements,
@@ -23,8 +23,11 @@ import {
 import theme from "lib/theme";
 import withRematch from "lib/withRematch";
 import { localeMessages } from "lib/internation";
+import { ErrorBoundary } from "lib/bugsnag";
 
 import { IRootDispatch, store } from "modules/store";
+
+import ErrorPage from "components/ErrorBoundary";
 
 import compose from "utils/compose";
 import { isServer } from "utils/server";
@@ -34,18 +37,6 @@ import { parseCookies, setCookie } from "utils/cookies";
 import { Language } from "types/language";
 
 import { LOCALE } from "constants/language";
-
-const Fallback: React.FC<{ error: Error }> = ({ error }) => {
-  console.log(error, "err ??");
-
-  return (
-    <div>
-      <h3>error crashed</h3>
-      <span>error: {JSON.stringify(error)}</span>
-      <Button onClick={() => window.location.reload()}>reload</Button>
-    </div>
-  );
-};
 
 type ThirdProps = {
   locale: Language;
@@ -99,17 +90,17 @@ class MyApp extends App<ConnectProps & ThirdProps> {
 
     return (
       <ChakraProvider theme={theme}>
-        <IntlProvider
-          locale={locale}
-          messages={localeMessages[locale as Language]}
-          textComponent="span"
-        >
-          {/* <ErrorBoundary fallback={(props) => <Fallback {...props} />}> */}
-          <Provider store={store as any}>
-            <Component {...pageProps} />
-          </Provider>
-          {/* </ErrorBoundary> */}
-        </IntlProvider>
+        <ErrorBoundary FallbackComponent={ErrorPage as any}>
+          <IntlProvider
+            locale={locale}
+            messages={localeMessages[locale as Language]}
+            textComponent="span"
+          >
+            <Provider store={store as any}>
+              <Component {...pageProps} />
+            </Provider>
+          </IntlProvider>
+        </ErrorBoundary>
       </ChakraProvider>
     );
   }

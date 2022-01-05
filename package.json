@@ -43,6 +43,8 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
+    "@bugsnag/js": "^7.14.1",
+    "@bugsnag/plugin-react": "^7.14.0",
     "@next/bundle-analyzer": "^12.0.7",
     "@types/cookie": "^0.4.1",
     "@types/react": "17.0.14",

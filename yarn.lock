@@ -106,6 +106,59 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
+"@bugsnag/browser@^7.14.1":
+  version "7.14.1"
+  resolved "https://registry.npmjs.org/@bugsnag/browser/-/browser-7.14.1.tgz#ba92aae1fb40aeba0983d2af950f70cc82729882"
+  integrity sha512-xenvisYx6xFNuh7GGR/SCLcRs2H6AXn58Ha/u/Yhk+typ1oE5EFAy15+2vdGMDmZp0GsAEgrOTsEZ30uSKdC1w==
+  dependencies:
+    "@bugsnag/core" "^7.14.0"
+
+"@bugsnag/core@^7.14.0":
+  version "7.14.0"
+  resolved "https://registry.npmjs.org/@bugsnag/core/-/core-7.14.0.tgz#a946d106f94d4ec5725a1208e84f542e2b56bc4d"
+  integrity sha512-DKN7hNEA6zEOgnucihgNEiMmx4GVaFHD9dJUYQFiouAIL19R/TLgG6B+pGC+QAqHVYsCUt5XDnG8jD+J+3fKOA==
+  dependencies:
+    "@bugsnag/cuid" "^3.0.0"
+    "@bugsnag/safe-json-stringify" "^6.0.0"
+    error-stack-parser "^2.0.3"
+    iserror "0.0.2"
+    stack-generator "^2.0.3"
+
+"@bugsnag/cuid@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/@bugsnag/cuid/-/cuid-3.0.0.tgz#2ee7642a30aee6dc86f5e7f824653741e42e5c35"
+  integrity sha512-LOt8aaBI+KvOQGneBtpuCz3YqzyEAehd1f3nC5yr9TIYW1+IzYKa2xWS4EiMz5pPOnRPHkyyS5t/wmSmN51Gjg==
+
+"@bugsnag/js@^7.14.1":
+  version "7.14.1"
+  resolved "https://registry.npmjs.org/@bugsnag/js/-/js-7.14.1.tgz#b9368751da0883e90e2fa486e5947251cf8766b6"
+  integrity sha512-ygykhixXByzolFpOsUGr72ENgiL1t4TkvKvka2rhoSHOr5kul9TierjvmwBKNpkPdUpDNkgqw3y349jYzzjk+w==
+  dependencies:
+    "@bugsnag/browser" "^7.14.1"
+    "@bugsnag/node" "^7.14.1"
+
+"@bugsnag/node@^7.14.1":
+  version "7.14.1"
+  resolved "https://registry.npmjs.org/@bugsnag/node/-/node-7.14.1.tgz#609cbb6b6dddce8d3458dcc0a0caa56c727a9fb5"
+  integrity sha512-QhdFez60rTlEueg5rA0W6x8UrTcEnssv4XVPgfooGe2fYh6O89RFjI7zVVdw8QXUyqdf7w4WzyAsCir3XEhCqQ==
+  dependencies:
+    "@bugsnag/core" "^7.14.0"
+    byline "^5.0.0"
+    error-stack-parser "^2.0.2"
+    iserror "^0.0.2"
+    pump "^3.0.0"
+    stack-generator "^2.0.3"
+
+"@bugsnag/plugin-react@^7.14.0":
+  version "7.14.0"
+  resolved "https://registry.npmjs.org/@bugsnag/plugin-react/-/plugin-react-7.14.0.tgz#066e9e28b18db3141daff34e14da81b5f36ef901"
+  integrity sha512-bCrCb+6DeWQjnjHp9mk923b30m9Uz0ritNaFbLC6WqpX1KmWJJ6YebP/McqxsV8DXzX7qf3W4qzCWdatkaOeKA==
+
+"@bugsnag/safe-json-stringify@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/@bugsnag/safe-json-stringify/-/safe-json-stringify-6.0.0.tgz#22abdcd83e008c369902976730c34c150148a758"
+  integrity sha512-htzFO1Zc57S8kgdRK9mLcPVTW1BY2ijfH7Dk2CeZmspTWKdKqSo1iwmqrq2WtRjFlo8aRZYgLX0wFrDXF/9DLA==
+
 "@chakra-ui/accordion@1.3.6":
   version "1.3.6"
   resolved "https://registry.nlark.com/@chakra-ui/accordion/download/@chakra-ui/accordion-1.3.6.tgz#9ebbcec4d1871ab79bdac84187246ce1d34c8d8a"
@@ -1615,6 +1668,11 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.nlark.com/builtin-status-codes/download/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
+byline@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/byline/-/byline-5.0.0.tgz#741c5216468eadc457b03410118ad77de8c1ddb1"
+  integrity sha1-dBxSFkaOrcRXsDQQEYrXfejB3bE=
+
 bytes@3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/bytes/download/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
@@ -2051,6 +2109,13 @@ encoding@0.1.13:
   dependencies:
     iconv-lite "^0.6.2"
 
+end-of-stream@^1.1.0:
+  version "1.4.4"
+  resolved "https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
+  integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
+  dependencies:
+    once "^1.4.0"
+
 enhanced-resolve@^5.7.0:
   version "5.8.3"
   resolved "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.8.3.tgz#6d552d465cce0423f5b3d718511ea53826a7b2f0"
@@ -2072,6 +2137,13 @@ error-ex@^1.3.1:
   integrity sha1-tKxAZIEH/c3PriQvQovqihTU8b8=
   dependencies:
     is-arrayish "^0.2.1"
+
+error-stack-parser@^2.0.2, error-stack-parser@^2.0.3:
+  version "2.0.6"
+  resolved "https://registry.npmjs.org/error-stack-parser/-/error-stack-parser-2.0.6.tgz#5a99a707bd7a4c58a797902d48d82803ede6aad8"
+  integrity sha512-d51brTeqC+BHlwF0BhPtcYgF5nlzf9ZZ0ZIUQNZpc9ZB9qw5IJ2diTrBY9jlCJkTLITYPjmiX6OWCwH+fuyNgQ==
+  dependencies:
+    stackframe "^1.1.1"
 
 es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2, es-abstract@^1.18.2:
   version "1.18.3"
@@ -2927,6 +2999,11 @@ is-typed-array@^1.1.3:
     foreach "^2.0.5"
     has-symbols "^1.0.1"
 
+iserror@0.0.2, iserror@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/iserror/-/iserror-0.0.2.tgz#bd53451fe2f668b9f2402c1966787aaa2c7c0bf5"
+  integrity sha1-vVNFH+L2aLnyQCwZZnh6qix8C/U=
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -3382,7 +3459,7 @@ object.values@^1.1.3, object.values@^1.1.4:
     define-properties "^1.1.3"
     es-abstract "^1.18.2"
 
-once@^1.3.0:
+once@^1.3.0, once@^1.3.1, once@^1.4.0:
   version "1.4.0"
   resolved "https://registry.nlark.com/once/download/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   integrity sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
@@ -3640,6 +3717,14 @@ public-encrypt@^4.0.0:
     parse-asn1 "^5.0.0"
     randombytes "^2.0.1"
     safe-buffer "^5.1.2"
+
+pump@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/pump/-/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
+  integrity sha512-LwZy+p3SFs1Pytd/jYct4wpv49HiYCqd9Rlc5ZVdk0V+8Yzv6jR5Blk3TRmPL1ft69TxP0IMZGJ+WPFU2BFhww==
+  dependencies:
+    end-of-stream "^1.1.0"
+    once "^1.3.1"
 
 punycode@^2.1.0:
   version "2.1.1"
@@ -4101,6 +4186,18 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.npm.taobao.org/sprintf-js/download/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+
+stack-generator@^2.0.3:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/stack-generator/-/stack-generator-2.0.5.tgz#fb00e5b4ee97de603e0773ea78ce944d81596c36"
+  integrity sha512-/t1ebrbHkrLrDuNMdeAcsvynWgoH/i4o8EGGfX7dEYDoTXOYVAkEpFdtshlvabzc6JlJ8Kf9YdFEoz7JkzGN9Q==
+  dependencies:
+    stackframe "^1.1.1"
+
+stackframe@^1.1.1:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/stackframe/-/stackframe-1.2.0.tgz#52429492d63c62eb989804c11552e3d22e779303"
+  integrity sha512-GrdeshiRmS1YLMYgzF16olf2jJ/IzxXY9lhKOskuVziubpTYcYqyOwYeJKzQkwy7uN0fYSsbsC4RQaXf9LCrYA==
 
 stacktrace-parser@0.1.10:
   version "0.1.10"

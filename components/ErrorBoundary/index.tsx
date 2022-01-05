@@ -1,48 +1,36 @@
-export {};
+import { NextPageContext } from "next";
+import React from "react";
 
-// import { ErrorBoundaryShim, ErrorBoundaryShimProps } from "./ErrorBoundaryShim";
-// import React from "react";
-// import { useLocation } from "react-dom";
-// import { ErrorBoundary as ErrorBoundaryClientImpl } from "react-error-boundary";
-// import { SetStatusCodeContext } from "./SetStatusCodeContext";
+import { notify } from "lib/bugsnag";
 
-// function ErrorBoundaryClient(props: ErrorBoundaryShimProps) {
-//   const location = useLocation();
-//   return (
-//     <ErrorBoundaryClientImpl
-//       fallbackRender={({ error }) => {
-//         return <props.fallbackComponent error={error} />;
-//       }}
-//       resetKeys={[location]}
-//       children={props.children}
-//     />
-//   );
-// }
+import Error from "./Error";
 
-// /**
-//  * An error boundary component that works both on the client and in SSR
-//  *
-//  * Wrap any bad-behaving component to avoid a broken website!
-//  */
-// const ErrorBoundaryImpl = import.meta.env.SSR
-//   ? ErrorBoundaryShim
-//   : ErrorBoundaryClient;
+interface IProps {
+  error: any;
+  statusCode: number;
+}
 
-// export function ErrorBoundary(props: ErrorBoundaryShimProps) {
-//   const fallbackComponent = React.useCallback(
-//     ({ error }) => {
-//       const setStatusCode = React.useContext(SetStatusCodeContext);
-//       setStatusCode(500);
+class ErrorPage extends React.Component<IProps> {
+  public static async getInitialProps(context: NextPageContext) {
+    if (context.err) {
+      notify(JSON.stringify(context.err));
+    }
 
-//       return <props.fallbackComponent error={error} />;
-//     },
-//     [props.fallbackComponent]
-//   );
+    return { statusCode: 404 };
+  }
 
-//   return (
-//     <ErrorBoundaryImpl
-//       children={props.children}
-//       fallbackComponent={fallbackComponent}
-//     />
-//   );
-// }
+  public render() {
+    const { error, statusCode } = this.props;
+
+    if (!error && !statusCode) return <></>;
+
+    return (
+      <Error
+        statusCode={statusCode}
+        errorMessage={error ? error.message : ""}
+      />
+    );
+  }
+}
+
+export default ErrorPage;
