@@ -79,18 +79,26 @@ class MyApp extends App<ConnectProps & ThirdProps> {
   public override componentDidMount() {
     const { locale, setLocale } = this.props;
 
+    // Register
     applyPolyfills().then(() => defineCustomElements(window));
 
     setCookie(LOCALE, locale, 7);
     setLocale(locale);
   }
 
+  private handleError = (...args: any) => {
+    console.log(args);
+  };
+
   public override render() {
     const { Component, pageProps, locale } = this.props;
 
     return (
       <ChakraProvider theme={theme}>
-        <ErrorBoundary FallbackComponent={ErrorPage as any}>
+        <ErrorBoundary
+          FallbackComponent={(props) => <ErrorPage {...props} />}
+          onError={this.handleError}
+        >
           <IntlProvider
             locale={locale}
             messages={localeMessages[locale as Language]}

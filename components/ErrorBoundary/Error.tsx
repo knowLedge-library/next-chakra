@@ -1,7 +1,7 @@
 import React from "react";
 
 interface IProps {
-  statusCode: number;
+  statusCode?: number;
   errorMessage: string;
 }
 
