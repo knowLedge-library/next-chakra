@@ -22,8 +22,8 @@
   "dependencies": {
     "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/react": "^1.6.7",
-    "@cosmosreverse/cosmos": "^0.0.1",
-    "@cosmosreverse/cosmos-react": "^0.0.1",
+    "@cosmosreverse/cosmos": "^0.0.2",
+    "@cosmosreverse/cosmos-react": "^0.0.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@formatjs/intl-locale": "^2.4.38",

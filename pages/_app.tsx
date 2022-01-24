@@ -38,6 +38,8 @@ import { Language } from "types/language";
 
 import { LOCALE } from "constants/language";
 
+import "@cosmosreverse/cosmos/dist/cosmos-reverse/compile-tailwindcss.css";
+
 type ThirdProps = {
   locale: Language;
 };

@@ -5,11 +5,38 @@
  * @LastEditTime: 2021-11-22 09:08:51
  * @Description: Test package page
  */
-import React from "react";
-import { TodoList } from "@cosmosreverse/cosmos-react";
+import React, { useState } from "react";
+import { CosmosSelect } from "@cosmosreverse/cosmos-react";
+import { CounterContext, useCounterContext } from "contexts";
 
-const TestNpmPackage: React.FC = () => <TodoList todoTitle="hahahah" />;
+const Test: React.FC = () => {
+  const { count } = useCounterContext();
 
-// const TestNpmPackage: React.FC = () => null;
+  console.log(count, "count");
+
+  // Use Consumer or useCounterContext all ok ~
+  return (
+    <CounterContext.Consumer>
+      {({ count }) => <CosmosSelect todoTitle={`${count}`} />}
+    </CounterContext.Consumer>
+  );
+};
+
+const TestNpmPackage: React.FC = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <CounterContext.Provider
+      value={{
+        count,
+        setCount,
+      }}
+    >
+      <button onClick={() => setCount((n) => n + 10)}>setCount</button>
+
+      <Test />
+    </CounterContext.Provider>
+  );
+};
 
 export default TestNpmPackage;

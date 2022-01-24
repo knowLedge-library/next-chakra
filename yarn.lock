@@ -713,17 +713,17 @@
   dependencies:
     "@chakra-ui/utils" "1.8.2"
 
-"@cosmosreverse/cosmos-react@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/@cosmosreverse/cosmos-react/-/cosmos-react-0.0.1.tgz#9c26a9fe8f3f70712dbbc623ef0e537eb2ada545"
-  integrity sha512-n4MZtP9zwuB7aRYYA6YK8RSgxglRGUpTxuyyjPgpjeTkj77J2bNDqoGZ3vJwHJhMiGPNZ5iW4Xh28IGSByPSFg==
+"@cosmosreverse/cosmos-react@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/@cosmosreverse/cosmos-react/-/cosmos-react-0.0.2.tgz#f904e9eaec789b8387813034f0f85ce68653eecc"
+  integrity sha512-dN5S/B8UpVEVhJbabIyKiHC3VCSTakiNxUsAqbZ9A09/OwF0Tmz3H7fce3XC/q74syC+aeXn7jFspwa6+T780A==
   dependencies:
-    "@cosmosreverse/cosmos" "^0.0.1"
+    "@cosmosreverse/cosmos" "^0.0.2"
 
-"@cosmosreverse/cosmos@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/@cosmosreverse/cosmos/-/cosmos-0.0.1.tgz#edbe645c734761b7e5a0bbb1ace032a29a7e2777"
-  integrity sha512-nNjPFO5nHZddXAcKHc15XbeZ4+ngmbhm93RqfwFeZMzHK7hZWXMIA7kJRv2oeqGMdfxVk2P8XuSGQzIoiJeKfg==
+"@cosmosreverse/cosmos@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/@cosmosreverse/cosmos/-/cosmos-0.0.2.tgz#0ae4b01efbea5348a918d4e91fd37ed27784983f"
+  integrity sha512-VvLcns5iByDyQAwI8GHBwAm6nUpTsZXVoDiYUtJvCMWnJtHqP8wYUkdlObco27FjSkWZ8gekDX3iemIuF9ZXiA==
 
 "@emotion/babel-plugin@^11.3.0":
   version "11.3.0"
