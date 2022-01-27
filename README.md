@@ -1,3 +1,11 @@
+<div align="center">
+
+[![Status](https://img.shields.io/badge/Light-i18n-blue)]()
+
+</div>
+
+---
+
 ## Overview
 
 - Base Chakra UI & Emotion
