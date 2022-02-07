@@ -23,11 +23,10 @@ import {
 import theme from "lib/theme";
 import withRematch from "lib/withRematch";
 import { localeMessages } from "lib/internation";
-import { ErrorBoundary } from "lib/bugsnag";
 
 import { IRootDispatch, store } from "modules/store";
 
-import ErrorPage from "components/ErrorBoundary";
+// import ErrorPage from "components/ErrorBoundary";
 
 import compose from "utils/compose";
 import { isServer } from "utils/server";
@@ -88,29 +87,20 @@ class MyApp extends App<ConnectProps & ThirdProps> {
     setLocale(locale);
   }
 
-  private handleError = (...args: any) => {
-    console.log(args);
-  };
-
   public override render() {
     const { Component, pageProps, locale } = this.props;
 
     return (
       <ChakraProvider theme={theme}>
-        <ErrorBoundary
-          FallbackComponent={(props) => <ErrorPage {...props} />}
-          onError={this.handleError}
+        <IntlProvider
+          locale={locale}
+          messages={localeMessages[locale as Language]}
+          textComponent="span"
         >
-          <IntlProvider
-            locale={locale}
-            messages={localeMessages[locale as Language]}
-            textComponent="span"
-          >
-            <Provider store={store as any}>
-              <Component {...pageProps} />
-            </Provider>
-          </IntlProvider>
-        </ErrorBoundary>
+          <Provider store={store as any}>
+            <Component {...pageProps} />
+          </Provider>
+        </IntlProvider>
       </ChakraProvider>
     );
   }

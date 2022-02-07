@@ -3,14 +3,12 @@ import type { IRootDispatch, IRootState } from "modules/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useToast, Button, Radio, RadioGroup, Stack } from "@chakra-ui/react";
-import { stringify } from "querystring";
 
 import { LOCALE } from "constants/language";
 
 import { setCookie } from "utils/cookies";
 
 import { Language } from "types/language";
-import { notify } from "lib/bugsnag";
 
 const SwitchLanguage: React.FC = () => {
   const toast = useToast();
@@ -27,43 +25,8 @@ const SwitchLanguage: React.FC = () => {
     window.location.reload();
   };
 
-  // Try to console the custom server message.
-  const handleClick = async () => {
-    const result = await fetch("http://localhost:3030/setting/set-cookie", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: stringify({
-        message: "Second mesage",
-      }),
-    });
-
-    if (result?.status === 200) {
-      return toast({
-        position: "top",
-        title: "Successed.",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-
-    console.log(result, "result");
-  };
-
-  const handleAll = async () => {
-    throw new Error("I crashedddd!");
-
-    // const allMessage = await fetch("http://localhost:3030/setting/all").then(
-    //   (r) => r.json()
-    // );
-
-    // console.log(allMessage);
-  };
-
-  const handleNotify = () => {
-    notify("custom error message in here");
+  const handleTrowError = () => {
+    throw new Error("Throw a custom error！！！！");
   };
 
   return (
@@ -74,8 +37,7 @@ const SwitchLanguage: React.FC = () => {
       </Stack>
 
       {/* <Button onClick={handleClick}>Console server message</Button> */}
-      <Button onClick={handleAll}>Get all</Button>
-      <Button onClick={handleNotify}>Notify error</Button>
+      <Button onClick={handleTrowError}>Throw error</Button>
     </RadioGroup>
   );
 };

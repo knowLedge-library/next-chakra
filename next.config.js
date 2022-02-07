@@ -15,6 +15,7 @@ module.exports = withTM([
 ])(
   withBundleAnalyzer({
     reactStrictMode: true,
+    swcMinify: true,
 
     webpack(config, options) {
       const { dev, isServer } = options;

@@ -1,8 +1,6 @@
 import { NextPageContext } from "next";
 import React, { ErrorInfo } from "react";
 
-import { notify } from "lib/bugsnag";
-
 import Error from "./Error";
 
 interface IState {
@@ -18,7 +16,7 @@ interface IProps {
 class ErrorPage extends React.Component<IProps, IState> {
   public static async getInitialProps(context: NextPageContext) {
     if (context.err) {
-      notify(JSON.stringify(context.err));
+      console.log(JSON.stringify(context.err));
     }
 
     return { statusCode: 404 };
