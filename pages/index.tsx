@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 
 import Head from "next/head";
+import Image from "next/image";
 import { useIntl } from "react-intl";
 import {
   Flex,
@@ -14,6 +15,8 @@ import {
 
 import SwitchLanguage from "components/SwitchLanguage";
 import TestNpmPackage from "components/NpmPackage";
+
+import tsLongLogo from "public/assets/ts-lang-logo.png";
 
 const Home: NextPage<{}> = () => {
   const intl = useIntl();
@@ -45,6 +48,14 @@ const Home: NextPage<{}> = () => {
       <span>{intl.formatMessage({ id: "t1" })}</span>
 
       <TestNpmPackage />
+
+      <Image
+        src={tsLongLogo}
+        width={400}
+        height={200}
+        placeholder="blur"
+        alt="ts-lang-logo"
+      />
     </>
   );
 };
