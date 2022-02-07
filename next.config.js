@@ -1,6 +1,7 @@
 const path = require("path");
 const nextBundleAnalyzer = require("@next/bundle-analyzer");
 const withTM = require("next-transpile-modules");
+const { withSentryConfig } = require("@sentry/nextjs");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 // Enable analyze
@@ -22,25 +23,25 @@ module.exports = withTM([
 
       // Integration source-map
       // Copied from https://github.com/vercel/next-plugins/blob/6786c6c431d896757b870f112f89e1fcf7ac7ae6/packages/next-source-maps/index.js#L13
-      // if (!dev) {
-      //   config.devtool = "source-map";
+      if (!dev) {
+        config.devtool = "source-map";
 
-      //   for (const plugin of config.plugins) {
-      //     if (plugin.constructor.name === "UglifyJsPlugin") {
-      //       plugin.options.sourceMap = true;
-      //       break;
-      //     }
-      //   }
+        for (const plugin of config.plugins) {
+          if (plugin.constructor.name === "UglifyJsPlugin") {
+            plugin.options.sourceMap = true;
+            break;
+          }
+        }
 
-      //   if (config.optimization && config.optimization.minimizer) {
-      //     for (const plugin of config.optimization.minimizer) {
-      //       if (plugin.constructor.name === "TerserPlugin") {
-      //         plugin.options.sourceMap = true;
-      //         break;
-      //       }
-      //     }
-      //   }
-      // }
+        if (config.optimization && config.optimization.minimizer) {
+          for (const plugin of config.optimization.minimizer) {
+            if (plugin.constructor.name === "TerserPlugin") {
+              plugin.options.sourceMap = true;
+              break;
+            }
+          }
+        }
+      }
 
       // Do not run type checking twice
       // Show type error in runtime
