@@ -1,7 +1,6 @@
 const path = require("path");
 const nextBundleAnalyzer = require("@next/bundle-analyzer");
 const withTM = require("next-transpile-modules");
-const { withSentryConfig } = require("@sentry/nextjs");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 // Enable analyze
