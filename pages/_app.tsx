@@ -19,7 +19,6 @@ import {
   applyPolyfills,
   defineCustomElements,
 } from "@cosmosreverse/cosmos/loader";
-import { ErrorBoundary } from "@sentry/nextjs";
 
 import theme from "lib/theme";
 import withRematch from "lib/withRematch";
@@ -98,16 +97,9 @@ class MyApp extends App<ConnectProps & ThirdProps> {
           messages={localeMessages[locale as Language]}
           textComponent="span"
         >
-          <ErrorBoundary
-            fallback={<h3 style={{ color: "red" }}>Occor error</h3>}
-            onError={(...args: any) => {
-              console.log(args, "args");
-            }}
-          >
-            <Provider store={store as any}>
-              <Component {...pageProps} />
-            </Provider>
-          </ErrorBoundary>
+          <Provider store={store as any}>
+            <Component {...pageProps} />
+          </Provider>
         </IntlProvider>
       </ChakraProvider>
     );
