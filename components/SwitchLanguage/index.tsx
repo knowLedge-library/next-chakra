@@ -26,7 +26,13 @@ const SwitchLanguage: React.FC = () => {
   };
 
   const handleTrowError = () => {
-    throw new Error("Throw a custom error！！！！");
+    try {
+      if (locale === Language.en) {
+        throw new Error("error - language");
+      }
+    } catch (error) {
+      throw new Error(`${error} - Throw a custom error！！！！`);
+    }
   };
 
   return (
