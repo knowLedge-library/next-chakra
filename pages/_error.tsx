@@ -1,4 +1,6 @@
 import { NextPageContext, NextPage } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 interface ErrorProps {
   statusCode?: number;
@@ -6,11 +8,22 @@ interface ErrorProps {
 
 const Error: NextPage<ErrorProps> = ({ statusCode }) => {
   return (
-    <p>
-      {statusCode
-        ? `An error ${statusCode} occurred on 【server】`
-        : "An error occurred on 【client】"}
-    </p>
+    <>
+      <Image
+        src="https://rickandmortyapi.com/api/character/avatar/234.jpeg"
+        alt="a dead morty..."
+      />
+
+      <p>
+        {statusCode
+          ? `An error ${statusCode} occurred on 【server】`
+          : "An error occurred on 【client】"}
+      </p>
+
+      <Link href="/">
+        <a>Go back home</a>
+      </Link>
+    </>
   );
 };
 

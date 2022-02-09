@@ -37,8 +37,6 @@ import { Language } from "types/language";
 
 import { LOCALE } from "constants/language";
 
-import "@cosmosreverse/cosmos/dist/cosmos-reverse/compile-tailwindcss.css";
-
 type ThirdProps = {
   locale: Language;
 };
@@ -89,6 +87,10 @@ class MyApp extends App<ConnectProps & ThirdProps> {
 
   public override render() {
     const { Component, pageProps, locale } = this.props;
+
+    if (process.browser) {
+      console.log(store.getState());
+    }
 
     return (
       <ChakraProvider theme={theme}>

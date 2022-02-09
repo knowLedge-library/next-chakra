@@ -32,7 +32,7 @@ const Home: NextPage<{}> = () => {
       </Head>
 
       <Box p={2} bgColor={boxBgColor}>
-        <Flex align="center">
+        <Flex align="center" borderRadius="3xl">
           <Heading size="md">{intl.formatMessage({ id: "first" })}</Heading>
 
           <Spacer />

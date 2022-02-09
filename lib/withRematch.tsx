@@ -1,33 +1,36 @@
 import type { IRootState } from "../modules/store";
+import type { NextPage } from "next";
+import type { IStore } from "../modules/store";
 
 import React from "react";
 
 import { store } from "../modules/store";
 import { isServer } from "../utils/server";
 
-const __NEXT_REDUX_STORE__: string = "__NEXT_REDUX_STORE__";
-
 // https://github.com/zeit/next.js/blob/canary/examples/with-rematch/shared/withRematch.js
 function getOrCreateStore() {
-  // Always make a new store if server, otherwise state is shared between requests
+  // 如果是服务端，则始终创建一个新的store，否则状态将在请求之间共享
   if (isServer()) {
     return store;
   }
 
-  // Create store if unavailable on the client and set it on the window object
-  if (!(window as any)[__NEXT_REDUX_STORE__]) {
-    (window as any)[__NEXT_REDUX_STORE__] = store;
+  // 如果客户端不可用，则创建 store，并将其设置在 window 对象上
+  if (!window.__NEXT_REDUX_STORE__) {
+    window.__NEXT_REDUX_STORE__ = store;
   }
 
-  return (window as any)[__NEXT_REDUX_STORE__];
+  return window.__NEXT_REDUX_STORE__;
 }
 
-const withRematch = (App: any) => {
+// 用于在服务端和客户端上通用地创建 store
+const withRematch = (App: NextPage<{ store: IStore }>) => {
   return class AppWithRematch extends React.Component {
+    private store: IStore;
+
     public static async getInitialProps(appContext: any) {
       const reduxStore = getOrCreateStore();
 
-      // Provide the store to getInitialProps of pages
+      // 为页面的 getInitialProps 提供store
       appContext.ctx.store = reduxStore;
 
       let appProps = {};
@@ -38,15 +41,12 @@ const withRematch = (App: any) => {
       return appProps;
     }
 
-    // @ts-ignore
-    constructor(props) {
+    constructor(props: any) {
       super(props);
-      // @ts-ignore
       this.store = getOrCreateStore();
     }
 
     public render() {
-      // @ts-ignore
       return <App {...this.props} store={this.store} />;
     }
   };

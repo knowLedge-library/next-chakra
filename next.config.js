@@ -17,6 +17,11 @@ module.exports = withTM([
     reactStrictMode: true,
     swcMinify: true,
 
+    images: {
+      // Test
+      domains: ["rickandmortyapi.com"],
+    },
+
     webpack(config, options) {
       const { dev, isServer } = options;
 
