@@ -88,10 +88,6 @@ class MyApp extends App<ConnectProps & ThirdProps> {
   public override render() {
     const { Component, pageProps, locale } = this.props;
 
-    if (process.browser) {
-      console.log(store.getState());
-    }
-
     return (
       <ChakraProvider theme={theme}>
         <IntlProvider

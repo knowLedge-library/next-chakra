@@ -1,4 +1,3 @@
-/* eslint-disable prefer-spread */
 // Reference from https://github.com/apollographql/react-apollo/tree/2.5.8.
 const compose = (...funcs: Function[]) => {
   const functions = funcs.reverse();

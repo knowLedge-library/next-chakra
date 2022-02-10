@@ -17,8 +17,9 @@ import SwitchLanguage from "components/SwitchLanguage";
 import TestNpmPackage from "components/NpmPackage";
 
 import tsLongLogo from "public/assets/ts-lang-logo.png";
+import Switch from "components/Base/Switch";
 
-const Home: NextPage<{}> = () => {
+const Index: NextPage<{}> = () => {
   const intl = useIntl();
   const { colorMode, toggleColorMode } = useColorMode();
   const boxBgColor = useColorModeValue("gray.50", "gray.700");
@@ -56,8 +57,10 @@ const Home: NextPage<{}> = () => {
         placeholder="blur"
         alt="ts-lang-logo"
       />
+
+      <Switch defaultChecked />
     </>
   );
 };
 
-export default Home;
+export default Index;

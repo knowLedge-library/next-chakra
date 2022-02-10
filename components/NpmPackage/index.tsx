@@ -10,9 +10,9 @@ import { CosmosSelect } from "@cosmosreverse/cosmos-react";
 import { CounterContext, useCounterContext } from "contexts";
 
 const Test: React.FC = () => {
-  const { count } = useCounterContext();
+  // const { count } = useCounterContext();
 
-  console.log(count, "count");
+  // console.log(count, "count");
 
   // Use Consumer or useCounterContext all ok ~
   return (
